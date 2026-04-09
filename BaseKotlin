@@ -1,0 +1,11 @@
+Переменные, константы и их инициализация, отложенная инициализация
+val name: String = "John" // Неизменяемая переменная
+var age: Int = 25 // Изменяемая переменная
+
+companion object {
+    const val PI = 3.14159 // Константа
+}
+
+lateinit var lazyVariable: String // Отложенная инициализация
+
+val userName: String by lazy { getName() } // Инициализация через делегат
