@@ -1,2 +1,86 @@
-// ========== ПЕРЕМЕННЫЕ, КОНСТАНТЫ И ИНИЦИАЛИЗАЦИЯ ==========
+========== ПЕРЕМЕННЫЕ, КОНСТАНТЫ И ИНИЦИАЛИЗАЦИЯ ==========
+val name: String = "John" // Неизменяемая переменная
+var age: Int = 25 // Изменяемая переменная
+companion object {
+    const val PI = 3.14159 // Константа
+}
+lateinit var lazyVariable: String // Отложенная инициализация
+val userName: String by lazy { getName() } // Инициализация через делегат
 
+
+========== Условные операторы ==========
+val num = 10
+if (num > 0) {
+    println("Число положительное")
+} else if (num < 0) {
+    println("Число отрицательное")
+} else {
+    println("Число равно нулю")
+}
+val result = when (num) {
+    in 1..10 -> "Число в диапазоне от 1 до 10"
+    0 -> "Число равно нулю"
+    else -> "Число не входит в указанные диапазоны"
+}
+println(result)
+
+
+========== Циклы ==========
+for (i in 1..5) {
+    println(i)
+}
+var i = 1
+while (i <= 5) {
+    println(i)
+    i++
+}
+i = 1
+do {
+    println(i)
+    i++
+} while (i <= 5)
+
+
+========== Массивы ==========
+val numbers = arrayOf(1, 2, 3, 4, 5) // Создание массива целых чисел
+val names = arrayOf("John", "Mike", "Sarah") // Создание массива строк
+val values = intArrayOf(1, 2, 3, 4, 5) // Создание массива целых чисел
+println(numbers[0]) // Выводит первый элемент массива (1)
+numbers[1] = 10 // Изменение второго элемента массива на 10
+
+
+========== Функции ==========
+fun greet(name: String) {
+    println("Привет, $name!")
+}
+greet("John") // Выводит "Привет, John!"
+fun addNumbers(a: Int, b: Int): Int {
+    return a + b
+}
+val sum = addNumbers(5, 3) // sum = 8
+fun multiplyNumbers(a: Int, b: Int = 2): Int {
+    return a * b
+}
+val result = multiplyNumbers(4) // result = 8
+
+
+========== Классы, конструкторы, объекты ==========
+class Person(val name: String, val age: Int) {
+    fun introduce() {
+        println("Меня зовут $name и мне $age лет")
+    }
+}
+val person = Person("John", 25)
+person.introduce() // Выводит "Меня зовут John и мне 25 лет"
+class Car(val brand: String, val model: String) {
+    constructor(brand: String) : this(brand, "Unknown")
+}
+val car = Car("Toyota")
+println(car.model) // Выводит "Unknown"
+
+object MathUtils {
+    fun square(number: Int): Int {
+        return number * number
+    }
+}
+val squaredValue = MathUtils.square(5) // squaredValue = 25
