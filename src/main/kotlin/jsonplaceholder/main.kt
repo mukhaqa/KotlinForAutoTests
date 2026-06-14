@@ -1,17 +1,21 @@
 package jsonplaceholder
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.Retrofit
-import kotlinx.coroutines.runBlocking
-import retrofit2.converter.gson.GsonConverterFactory
 
-    fun main() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+import User
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import com.google.gson.Gson
 
-        val api = retrofit.create(Api::class.java)
+fun main() {
+    val client = OkHttpClient()
+    val request = Request.Builder()
+        .url("https://jsonplaceholder.typicode.com/comments/1")
+        .build()
 
-    }
+    val response = client.newCall(request).execute()
+    val json = response.body?.string()
+
+    val gson = Gson()
+    val user = gson.fromJson(json, Comment::class.java)
+
+    println(user)
 }
