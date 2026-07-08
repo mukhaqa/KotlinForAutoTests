@@ -32,3 +32,22 @@ interface Api {
     suspend fun getUser(@Path("id") id: Int): User
 }
 
+data class CreatePost(
+    val post: Post
+)
+
+data class UpdatePost(
+    val Id: Int,
+    val post: Post
+)
+
+data class DeletePost(
+    val Id: Boolean
+)
+
+data class GetPosts(
+    val Id: Int
+)
+
+
+
